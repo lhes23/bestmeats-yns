@@ -40,3 +40,8 @@ export default async function StoreLayout({
 		</>
 	);
 }
+
+export const styles = {
+	button:
+		"inline-flex h-10 items-center justify-center rounded-full bg-orange-200 px-6 font-medium text-gray-700 transition-colors hover:bg-red-400/90 focus:outline-hidden focus:ring-1 focus:ring-neutral-950",
+};
