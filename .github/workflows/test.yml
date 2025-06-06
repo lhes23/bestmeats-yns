@@ -39,7 +39,7 @@ jobs:
         run: pnpm --version && pnpm install --frozen-lockfile
 
       - name: Check Biome
-        run: pnpm biome check
+        run: pnpm biome check --write
 
       - name: Test
         run: pnpm test
