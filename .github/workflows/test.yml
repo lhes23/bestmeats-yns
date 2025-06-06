@@ -16,14 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Enable and prepare pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@8.15.4 --activate
 
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version-file: package.json
-          cache: "pnpm"
+          cache: 'pnpm'
 
       - uses: actions/cache@v4
         with:
@@ -31,7 +33,7 @@ jobs:
             ${{ github.workspace }}/.next/cache
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.json') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
       - name: Install dependencies
         run: pnpm --version && pnpm install --frozen-lockfile
